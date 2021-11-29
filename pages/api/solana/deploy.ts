@@ -15,14 +15,14 @@ export default async function deploy(
     const {network, programId} = req.body;
     const url = getNodeURL(network);
     const connection = new Connection(url, 'confirmed');
-    // Re-create publicKeys from params
+    // Get the publicKey of the programId and get its account info
     const publicKey = undefined;
     const programInfo = undefined;
 
     if (programInfo === null) {
       if (fs.existsSync(PROGRAM_SO_PATH)) {
         throw new Error(
-          'Program needs to be deployed with `solana program deploy`',
+          'Program needs to be deployed with `solana deploy`',
         );
       } else {
         throw new Error('Program needs to be built and deployed');
